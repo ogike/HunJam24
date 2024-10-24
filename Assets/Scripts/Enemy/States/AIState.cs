@@ -9,11 +9,10 @@ namespace Enemy.States
     [Serializable]
     public class AIStateMecanimInfo
     {
-
         public bool exitsByDefault;
         public TimeValue stateTime;
         
-        [FormerlySerializedAs("AnimatorEntryTrigger")] [Tooltip("The Animator trigger or bool that will be set off on state entry")]
+        [Tooltip("The Animator trigger or bool that will be set off on state entry")]
         public String animatorEntryTrigger;
 
         public AnimatorEntryEventType animatorEntryEventType;
