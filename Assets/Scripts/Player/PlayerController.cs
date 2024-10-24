@@ -40,6 +40,17 @@ namespace Player
         private Rigidbody2D _rigidbody;
         private CircleCollider2D _collider;
 
+        private void Awake()
+        {
+            if (Instance != null)
+            {
+                Debug.LogError("More than one PlayerController in scene! " + gameObject);
+                return;
+            }
+
+            Instance = this;
+        }
+        
         void Start()
         {
             _trans = transform;
@@ -49,14 +60,6 @@ namespace Player
             _isMoving = false;
             _timeSinceLastMove = 0;
             _timeSinceLastStop = 0;
-        }
-
-        private void Awake()
-        {
-            if (Instance != null)
-            {
-                Debug.LogError("More than one PlayerController in scene! " + gameObject);
-            }
         }
 
         private void Update()

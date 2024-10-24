@@ -9,7 +9,6 @@ public class UIScript : MonoBehaviour
 {
     public static UIScript Instance { get; private set; }
     
-    public Text timerText;
     public Text timescaleValueText;
 
     public GameObject debugPanel;
@@ -54,17 +53,6 @@ public class UIScript : MonoBehaviour
             if (pausePanel.activeInHierarchy) HidePausePanel();
             else                              ShowPausePanel();
         }
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        int allSeconds = Mathf.FloorToInt(Time.timeSinceLevelLoad);
-
-        int minutes = allSeconds / 60;
-        int secondsToDisplay = allSeconds % 60;
-
-        timerText.text = minutes.ToString("D2") + ":" + secondsToDisplay.ToString("D2");
     }
 
     void ToggleDebugPanel()
