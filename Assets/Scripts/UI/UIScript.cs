@@ -66,6 +66,7 @@ public class UIScript : MonoBehaviour
         
         pausePanel.SetActive(true);
         GameManager.Instance.ChangeTime(0);
+        GameManager.Instance.ChangePause(true);
         Paused = true;
         
         _debugPanelActive = pausePanel.activeInHierarchy;
@@ -79,6 +80,7 @@ public class UIScript : MonoBehaviour
 
         pausePanel.SetActive(false);
         GameManager.Instance.ChangeTime(_timeScale);
+        GameManager.Instance.ChangePause(false);
         Paused = false;
         
         if(!debugPanel)
@@ -88,6 +90,16 @@ public class UIScript : MonoBehaviour
     public void ShowGameOverPanel()
     {
         gameOverScreen.SetActive(true);
+    }
+
+    public void RestartButton()
+    {
+        GameManager.Instance.RestartScene();
+    }
+
+    public void MainMenuButton()
+    {
+        GameManager.Instance.GoToMainMenu();
     }
 
     public void ChangeTimeSlider(float value)
