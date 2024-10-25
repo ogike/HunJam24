@@ -6,10 +6,11 @@ using UnityEngine.InputSystem;
 
 public class UserInput : MonoBehaviour
 {
-    public static UserInput instance;
+    public static UserInput Instance;
     
     public Vector2 MoveInput { get; private set; }
     
+    //TODO: get old code out
     public bool LightAttackPressedThisFrame { get; private set; }
     public bool LightAttackHeld { get; private set; }
     public bool LightAttackReleased { get; private set; }
@@ -19,6 +20,11 @@ public class UserInput : MonoBehaviour
     public bool HeavyAttackReleased { get; private set; }
 
     public bool MenuButtonPressedThisFrame { get; private set; }
+    
+    //TODO: register inputs
+    public bool InteractButtonPressedThisFrame { get; private set; }
+    
+    public bool SubmitButtonPressedThisFrame { get; private set; }
     
     public bool DebugMenuButtonPressedThisFrame { get; private set; }
     public bool DebugEnemySpawnPressedThisFrame { get; private set; }
@@ -38,12 +44,12 @@ public class UserInput : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Debug.LogError("More than one UserInput instance in scene!");
             return;
         }
-        instance = this;
+        Instance = this;
 
         _playerInput = GetComponent<PlayerInput>();
         

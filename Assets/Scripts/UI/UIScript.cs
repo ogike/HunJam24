@@ -43,12 +43,12 @@ public class UIScript : MonoBehaviour
 
     private void Update()
     {
-        if (UserInput.instance.DebugMenuButtonPressedThisFrame && !Paused)
+        if (UserInput.Instance.DebugMenuButtonPressedThisFrame && !Paused)
         {
             ToggleDebugPanel();   
         }
 
-        if (UserInput.instance.MenuButtonPressedThisFrame)
+        if (UserInput.Instance.MenuButtonPressedThisFrame)
         {
             if (pausePanel.activeInHierarchy) HidePausePanel();
             else                              ShowPausePanel();
