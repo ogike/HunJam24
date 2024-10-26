@@ -12,33 +12,34 @@ namespace Dialogue
 {
     public class DialogueManager : MonoBehaviour
     {
+        public static DialogueManager Instance { get; private set; }
+
         [Header("Params")]
         [SerializeField] private float typingSpeed = 0.04f;
 
         [Header("Load Globals JSON")]
         [SerializeField] private TextAsset loadGlobalsJSON;
 
-        [Header("Dialogue UI")]
-        [SerializeField] private GameObject dialoguePanel;
-        [SerializeField] private GameObject continueIcon;
-        [SerializeField] private TextMeshProUGUI dialogueText;
-        [SerializeField] private TextMeshProUGUI displayNameText;
-        [SerializeField] private Animator portraitAnimator;
-        private Animator layoutAnimator;
+        [Header("NPC Dialogue UI")]
+        [SerializeField] private GameObject npcDialoguePanel;
+        [SerializeField] private GameObject npcDialogueContinueIcon;
+        [SerializeField] private TextMeshProUGUI npcDialogueText;
+        private Transform npcDialoguePosition;
+        private Transform npcDialoguePanelTransform;
 
-        [Header("Choices UI")]
-        [SerializeField] private GameObject[] choices;
-        private TextMeshProUGUI[] choicesText;
+        [Header("Player Dialogue UI")]
+        [SerializeField] private GameObject playerDialoguePanel;
+        [SerializeField] private GameObject playerDialogueChoicesIcon;
+        [SerializeField] private TextMeshProUGUI playerDialogueText;
+        [SerializeField] private TextMeshProUGUI choicesText;
 
+        
         private Story currentStory;
         public bool dialogueIsPlaying { get; private set; }
 
         private bool canContinueToNextLine = false;
 
         private Coroutine displayLineCoroutine;
-
-        private static DialogueManager instance;
-
         private const string SPEAKER_TAG = "speaker";
         private const string PORTRAIT_TAG = "portrait";
         private const string LAYOUT_TAG = "layout";
@@ -47,36 +48,22 @@ namespace Dialogue
 
         private void Awake() 
         {
-            if (instance != null)
+            if (Instance != null)
             {
                 Debug.LogWarning("Found more than one Dialogue Manager in the scene");
             }
-            instance = this;
+            Instance = this;
 
             dialogueVariables = new DialogueVariables(loadGlobalsJSON);
-        }
-
-        public static DialogueManager GetInstance() 
-        {
-            return instance;
+            npcDialoguePanelTransform = npcDialoguePanel.transform;
         }
 
         private void Start() 
         {
             dialogueIsPlaying = false;
-            dialoguePanel.SetActive(false);
-
-            // get the layout animator
-            layoutAnimator = dialoguePanel.GetComponent<Animator>();
-
-            // get all of the choices text 
-            choicesText = new TextMeshProUGUI[choices.Length];
-            int index = 0;
-            foreach (GameObject choice in choices) 
-            {
-                choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
-                index++;
-            }
+            npcDialoguePanel.SetActive(false);
+            playerDialoguePanel.SetActive(false);
+            npcDialogueContinueIcon.SetActive(false);
         }
 
         private void Update() 
@@ -88,7 +75,6 @@ namespace Dialogue
             }
 
             // handle continuing to the next line in the dialogue when submit is pressed
-            // NOTE: The 'currentStory.currentChoiecs.Count == 0' part was to fix a bug after the Youtube video was made
             if (canContinueToNextLine 
                 && currentStory.currentChoices.Count == 0 
                 && UserInput.Instance.SubmitButtonPressedThisFrame)
@@ -97,18 +83,17 @@ namespace Dialogue
             }
         }
 
-        public void EnterDialogueMode(TextAsset inkJSON) 
+        public void EnterDialogueMode(TextAsset inkJSON, Transform npcDialoguePosition) 
         {
             currentStory = new Story(inkJSON.text);
             dialogueIsPlaying = true;
-            dialoguePanel.SetActive(true);
-
+            npcDialoguePanel.SetActive(true);
+            playerDialoguePanel.SetActive(true);
+            
             dialogueVariables.StartListening(currentStory);
 
-            // reset portrait, layout, and speaker
-            displayNameText.text = "???";
-            portraitAnimator.Play("default");
-            layoutAnimator.Play("right");
+            this.npcDialoguePosition = npcDialoguePosition;
+            npcDialoguePanelTransform.position = this.npcDialoguePosition.position;
 
             ContinueStory();
         }
@@ -120,8 +105,10 @@ namespace Dialogue
             dialogueVariables.StopListening(currentStory);
 
             dialogueIsPlaying = false;
-            dialoguePanel.SetActive(false);
-            dialogueText.text = "";
+            npcDialoguePanel.SetActive(false);
+            npcDialogueText.text = "";
+            playerDialoguePanel.SetActive(false);
+            playerDialogueText.text = "";
         }
 
         private void ContinueStory() 
@@ -143,6 +130,7 @@ namespace Dialogue
             }
         }
 
+        //TODO: seperate this into the two bubbles
         private IEnumerator DisplayLine(string line) 
         {
             // set the text to the full line, but set the visible characters to 0
