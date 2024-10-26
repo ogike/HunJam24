@@ -24,7 +24,7 @@ namespace Dialogue
         [SerializeField] private GameObject npcDialoguePanel;
         [SerializeField] private GameObject npcDialogueContinueIcon;
         [SerializeField] private TextMeshProUGUI npcDialogueText;
-        private Transform npcDialoguePosition;
+        private Transform npcDialoguePosition; //passed from DialogueTrigger
         private Transform npcDialoguePanelTransform;
 
         [Header("Player Dialogue UI")]
@@ -134,11 +134,13 @@ namespace Dialogue
         private IEnumerator DisplayLine(string line) 
         {
             // set the text to the full line, but set the visible characters to 0
-            dialogueText.text = line;
-            dialogueText.maxVisibleCharacters = 0;
+            playerDialogueText.text = line;
+            playerDialogueText.maxVisibleCharacters = 0;
             // hide items while text is typing
-            continueIcon.SetActive(false);
-            HideChoices();
+            npcDialogueContinueIcon.SetActive(false);
+            
+            //TODO: hide player options icon
+            //HideChoices();
 
             canContinueToNextLine = false;
 
@@ -150,7 +152,7 @@ namespace Dialogue
                 // if the submit button is pressed, finish up displaying the line right away
                 if (UserInput.Instance.SubmitButtonPressedThisFrame) 
                 {
-                    dialogueText.maxVisibleCharacters = line.Length;
+                    playerDialogueText.maxVisibleCharacters = line.Length;
                     break;
                 }
 
@@ -166,24 +168,16 @@ namespace Dialogue
                 // if not rich text, add the next letter and wait a small time
                 else 
                 {
-                    dialogueText.maxVisibleCharacters++;
+                    playerDialogueText.maxVisibleCharacters++;
                     yield return new WaitForSeconds(typingSpeed);
                 }
             }
 
             // actions to take after the entire line has finished displaying
-            continueIcon.SetActive(true);
+            npcDialogueContinueIcon.SetActive(true);
             DisplayChoices();
 
             canContinueToNextLine = true;
-        }
-
-        private void HideChoices() 
-        {
-            foreach (GameObject choiceButton in choices) 
-            {
-                choiceButton.SetActive(false);
-            }
         }
 
         private void HandleTags(List<string> currentTags)
@@ -200,18 +194,18 @@ namespace Dialogue
                 string tagKey = splitTag[0].Trim();
                 string tagValue = splitTag[1].Trim();
             
-                // handle the tag
+                //TODO:  handle the tag
                 switch (tagKey) 
                 {
-                    case SPEAKER_TAG:
-                        displayNameText.text = tagValue;
-                        break;
-                    case PORTRAIT_TAG:
-                        portraitAnimator.Play(tagValue);
-                        break;
-                    case LAYOUT_TAG:
-                        layoutAnimator.Play(tagValue);
-                        break;
+                    // case SPEAKER_TAG:
+                    //     displayNameText.text = tagValue;
+                    //     break;
+                    // case PORTRAIT_TAG:
+                    //     portraitAnimator.Play(tagValue);
+                    //     break;
+                    // case LAYOUT_TAG:
+                    //     layoutAnimator.Play(tagValue);
+                    //     break;
                     default:
                         Debug.LogWarning("Tag came in but is not currently being handled: " + tag);
                         break;
@@ -223,26 +217,20 @@ namespace Dialogue
         {
             List<Choice> currentChoices = currentStory.currentChoices;
 
-            // defensive check to make sure our UI can support the number of choices coming in
-            if (currentChoices.Count > choices.Length)
-            {
-                Debug.LogError("More choices were given than the UI can support. Number of choices given: " 
-                               + currentChoices.Count);
-            }
-
             int index = 0;
             // enable and initialize the choices up to the amount of choices for this line of dialogue
             foreach(Choice choice in currentChoices) 
             {
-                choices[index].gameObject.SetActive(true);
-                choicesText[index].text = choice.text;
+                // choices[index].gameObject.SetActive(true);
+                // choicesText[index].text = choice.text;
+                Debug.Log("New choice: " + choice.text);
                 index++;
             }
             // go through the remaining choices the UI supports and make sure they're hidden
-            for (int i = index; i < choices.Length; i++) 
-            {
-                choices[i].gameObject.SetActive(false);
-            }
+            // for (int i = index; i < choices.Length; i++) 
+            // {
+            //     choices[i].gameObject.SetActive(false);
+            // }
 
             StartCoroutine(SelectFirstChoice());
         }
@@ -253,7 +241,7 @@ namespace Dialogue
             // for at least one frame before we set the current selected object.
             EventSystem.current.SetSelectedGameObject(null);
             yield return new WaitForEndOfFrame();
-            EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
+            // EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
         }
 
         public void MakeChoice(int choiceIndex)

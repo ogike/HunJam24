@@ -1,0 +1,1 @@
+﻿VAR times_interacted_with = "0"

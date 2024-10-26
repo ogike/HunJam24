@@ -31,7 +31,7 @@ namespace Dialogue
                 visualCue.SetActive(true);
                 if (UserInput.Instance.InteractButtonPressedThisFrame) 
                 {
-                    DialogueManager.Instance.EnterDialogueMode(this, speechBubblePosition);
+                    DialogueManager.Instance.EnterDialogueMode(inkJSON, speechBubblePosition);
                 }
             }
             else 
