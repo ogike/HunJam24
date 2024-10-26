@@ -1,4 +1,5 @@
 using System;
+using Dialogue;
 using UnityEngine;
 
 namespace Player
@@ -90,12 +91,14 @@ namespace Player
 
         private void Move()
         {
+
             //get basic input dir
             float inputH = UserInput.Instance.MoveInput.x;
             float inputV = UserInput.Instance.MoveInput.y;
 
             //reset movement if no input
-            if (inputH == 0 && inputV == 0)
+            if ((inputH == 0 && inputV == 0)
+                || DialogueManager.Instance.dialogueIsPlaying)
             {
                 if (_isMoving)
                 {
