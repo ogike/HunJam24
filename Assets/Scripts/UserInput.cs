@@ -9,16 +9,9 @@ public class UserInput : MonoBehaviour
     public static UserInput instance;
     
     public Vector2 MoveInput { get; private set; }
-    
-    public bool LightAttackPressedThisFrame { get; private set; }
-    public bool LightAttackHeld { get; private set; }
-    public bool LightAttackReleased { get; private set; }
-    
-    public bool HeavyAttackPressedThisFrame { get; private set; }
-    public bool HeavyAttackHeld { get; private set; }
-    public bool HeavyAttackReleased { get; private set; }
 
     public bool MenuButtonPressedThisFrame { get; private set; }
+    public bool InteractButtonPressedThisFrame { get; private set; }
     
     public bool DebugMenuButtonPressedThisFrame { get; private set; }
     public bool DebugEnemySpawnPressedThisFrame { get; private set; }
@@ -26,10 +19,10 @@ public class UserInput : MonoBehaviour
     private PlayerInput _playerInput;
 
     private InputAction _moveAction;
-    private InputAction _lightAttackAction;
-    private InputAction _heavyAttackAction;
+    
 
     private InputAction _menuAction;
+    private InputAction _interactAction;
     
     private InputAction _debugMenuAction;
     private InputAction _debugSpawnAction;
@@ -48,9 +41,8 @@ public class UserInput : MonoBehaviour
         _playerInput = GetComponent<PlayerInput>();
         
         _moveAction = _playerInput.actions["Move"];
-        _lightAttackAction = _playerInput.actions["LightAttack"];
-        _heavyAttackAction = _playerInput.actions["HeavyAttack"];
         _menuAction = _playerInput.actions["MenuOpenClose"];
+        _interactAction = _playerInput.actions["Interact"];
         _debugMenuAction = _playerInput.actions["DebugMenu"];
         _debugSpawnAction = _playerInput.actions["DebugSpawnEnemy"];
     }
@@ -59,15 +51,13 @@ public class UserInput : MonoBehaviour
     {
         MoveInput = _moveAction.ReadValue<Vector2>();
 
-        LightAttackPressedThisFrame = _lightAttackAction.WasPressedThisFrame();
-        LightAttackHeld = _lightAttackAction.IsPressed();
-        LightAttackReleased = _lightAttackAction.WasReleasedThisFrame();
-        
-        HeavyAttackPressedThisFrame = _heavyAttackAction.WasPressedThisFrame();
-        HeavyAttackHeld = _heavyAttackAction.IsPressed();
-        HeavyAttackReleased = _heavyAttackAction.WasReleasedThisFrame();
-
         MenuButtonPressedThisFrame = _menuAction.WasPressedThisFrame();
+
+        InteractButtonPressedThisFrame = _interactAction.WasPressedThisFrame();
+        if (InteractButtonPressedThisFrame)
+        {
+            Debug.Log("Interact button pressed");
+        }
         
         DebugMenuButtonPressedThisFrame = _debugMenuAction.WasPressedThisFrame();
         DebugEnemySpawnPressedThisFrame = _debugSpawnAction.WasPressedThisFrame();
