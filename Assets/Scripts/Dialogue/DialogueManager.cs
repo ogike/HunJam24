@@ -129,6 +129,8 @@ namespace Dialogue
             this.npcDialoguePosition = npcDialoguePosition;
             npcDialoguePanelTransform.position = npcDialoguePosition.position;
             playerDialoguePanelTransform.position = playerDialoguePosition.position;
+            
+            CameraFollow.Instance.SetZoomDialogue();
 
             ContinueStory();
         }
@@ -144,6 +146,8 @@ namespace Dialogue
             npcDialogueText.text = "";
             playerDialoguePanel.SetActive(false);
             playerDialogueText.text = "";
+            
+            CameraFollow.Instance.SetZoomNormal();
         }
 
         private void ContinueStory() 
