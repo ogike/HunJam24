@@ -1,14 +1,20 @@
+using TMPro;
 using UnityEngine;
 
 namespace Dialogue
 {
+    /// <summary>
+    /// Holds everything needed for a dialogue from NPC side
+    /// </summary>
     public class DialogueTrigger : MonoBehaviour
     {
-        [Header("Visual Cue")]
-        [SerializeField] private GameObject visualCue;
-
         [Header("Ink JSON")]
-        [SerializeField] private TextAsset inkJSON;
+        public TextAsset inkJSON;
+        
+        [Header("UI")]
+        public GameObject visualCue;
+
+        public Transform speechBubblePosition;
 
         private bool playerInRange;
 
@@ -20,12 +26,12 @@ namespace Dialogue
 
         private void Update() 
         {
-            if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying) 
+            if (playerInRange && !DialogueManager.Instance.dialogueIsPlaying) 
             {
                 visualCue.SetActive(true);
                 if (UserInput.Instance.InteractButtonPressedThisFrame) 
                 {
-                    DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+                    DialogueManager.Instance.EnterDialogueMode(this, speechBubblePosition);
                 }
             }
             else 
