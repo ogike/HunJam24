@@ -42,7 +42,7 @@ public class UserInput : MonoBehaviour
         
         _moveAction = _playerInput.actions["Move"];
         _menuAction = _playerInput.actions["MenuOpenClose"];
-        _menuAction = _playerInput.actions["Interact"];
+        _interactAction = _playerInput.actions["Interact"];
         _debugMenuAction = _playerInput.actions["DebugMenu"];
         _debugSpawnAction = _playerInput.actions["DebugSpawnEnemy"];
     }
@@ -53,7 +53,11 @@ public class UserInput : MonoBehaviour
 
         MenuButtonPressedThisFrame = _menuAction.WasPressedThisFrame();
 
-        MenuButtonPressedThisFrame = _interactAction.WasPressedThisFrame();
+        InteractButtonPressedThisFrame = _interactAction.WasPressedThisFrame();
+        if (InteractButtonPressedThisFrame)
+        {
+            Debug.Log("Interact button pressed");
+        }
         
         DebugMenuButtonPressedThisFrame = _debugMenuAction.WasPressedThisFrame();
         DebugEnemySpawnPressedThisFrame = _debugSpawnAction.WasPressedThisFrame();
