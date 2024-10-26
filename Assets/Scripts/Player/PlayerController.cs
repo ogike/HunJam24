@@ -20,7 +20,6 @@ namespace Player
         private float lastInputH;
         private float lastInputV;
         private Vector2 _last4WayDir;
-        private bool rotatedThisUpdate = false;
 
         private float _timeSinceLastStop;
         private float _timeSinceLastMove;
@@ -191,8 +190,6 @@ namespace Player
                 float rotZ = Mathf.Atan2(lookV, lookH) * Mathf.Rad2Deg;
             
                 float finalRot = rotZ - plusRotValue;
-                _trans.rotation = Quaternion.Euler(0, 0, finalRot);
-                rotatedThisUpdate = true;
 
                 lastInputH = inputH;
                 lastInputV = inputV;
