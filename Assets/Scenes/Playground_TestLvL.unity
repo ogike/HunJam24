@@ -6511,6 +6511,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: MushroomNPC
       objectReference: {fileID: 0}
+    - target: {fileID: 4729842060450980184, guid: a7921e1ab8625c949881cadbdd1485dc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.97526026
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729842060450980184, guid: a7921e1ab8625c949881cadbdd1485dc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.97526026
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729842060450980184, guid: a7921e1ab8625c949881cadbdd1485dc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.97526026
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729842060450980184, guid: a7921e1ab8625c949881cadbdd1485dc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729842060450980184, guid: a7921e1ab8625c949881cadbdd1485dc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5207374455538529091, guid: a7921e1ab8625c949881cadbdd1485dc, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -6555,6 +6575,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5821369626997164080, guid: a7921e1ab8625c949881cadbdd1485dc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3b2e795b7bf24924792aa5101e6e8be2, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -42657,6 +42681,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 66119624}
+    - target: {fileID: 5920911193631892839, guid: 3e50bf2f5a877a648988561ca9beabb1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6366419546279489286, guid: 3e50bf2f5a877a648988561ca9beabb1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
