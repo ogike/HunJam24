@@ -1,6 +1,7 @@
 // All of the code in this folder is copied/derived from Github user shapedbyrainstudios
 // Repo: https://github.com/shapedbyrainstudios/ink-dialogue-system
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Ink.Runtime;
@@ -37,14 +38,19 @@ namespace Dialogue
         private Story currentStory;
         public bool dialogueIsPlaying { get; private set; }
 
-        private bool canContinueToNextLine = false;
+        private bool _canContinueToNextLine = false;
+        private int _currentChoiceIndex = 0;
+        private bool npcTalking;
+        private bool _switchedChoiceAlready;
 
         private Coroutine displayLineCoroutine;
-        private const string SPEAKER_TAG = "speaker";
-        private const string PORTRAIT_TAG = "portrait";
-        private const string LAYOUT_TAG = "layout";
+
+        private const string PLAYER_STRING_TAG = "player";
+        private const string MUSHROOM_SPEAKING_TAG = "mushroom";
 
         private DialogueVariables dialogueVariables;
+
+        private const float _floatingPointTolerance = 0.01f;
 
         private void Awake() 
         {
@@ -73,13 +79,39 @@ namespace Dialogue
             {
                 return;
             }
+            
 
             // handle continuing to the next line in the dialogue when submit is pressed
-            if (canContinueToNextLine 
-                && currentStory.currentChoices.Count == 0 
-                && UserInput.Instance.SubmitButtonPressedThisFrame)
+            if (_canContinueToNextLine
+                && UserInput.Instance.InteractButtonPressedThisFrame)
             {
-                ContinueStory();
+                if(currentStory.currentChoices.Count == 0)
+                    ContinueStory();
+                else
+                    MakeChoice();
+            }
+
+            if (currentStory.currentChoices.Count > 0)
+            {
+                float xInput = UserInput.Instance.MoveInput.x;
+                if (_switchedChoiceAlready && xInput == 0)
+                {
+                    _switchedChoiceAlready = false;
+                }
+                
+                if (!_switchedChoiceAlready)
+                {
+                    if (Math.Abs(xInput - 1) < _floatingPointTolerance)
+                    {
+                        NextChoice();
+                        _switchedChoiceAlready = true;
+                    }
+                    else if (Math.Abs(xInput - (-1)) < _floatingPointTolerance)
+                    {
+                        PreviousChoice();
+                        _switchedChoiceAlready = true;
+                    }
+                }
             }
         }
 
@@ -87,8 +119,8 @@ namespace Dialogue
         {
             currentStory = new Story(inkJSON.text);
             dialogueIsPlaying = true;
-            npcDialoguePanel.SetActive(true);
-            playerDialoguePanel.SetActive(true);
+            // npcDialoguePanel.SetActive(true);
+            // playerDialoguePanel.SetActive(true);
             
             dialogueVariables.StartListening(currentStory);
 
@@ -120,9 +152,11 @@ namespace Dialogue
                 {
                     StopCoroutine(displayLineCoroutine);
                 }
-                displayLineCoroutine = StartCoroutine(DisplayLine(currentStory.Continue()));
-                // handle tags
+
+                string currentLine = currentStory.Continue();
                 HandleTags(currentStory.currentTags);
+                
+                displayLineCoroutine = StartCoroutine(DisplayLine(currentLine));
             }
             else 
             {
@@ -131,28 +165,51 @@ namespace Dialogue
         }
 
         //TODO: seperate this into the two bubbles
-        private IEnumerator DisplayLine(string line) 
+        private IEnumerator DisplayLine(string line)
         {
+            if (line.Trim().Length == 0)
+            {
+                ContinueStory();
+                yield break;
+            }
+            
+            TextMeshProUGUI currentDialogueText = npcTalking ? npcDialogueText : playerDialogueText;
+
+            if (npcTalking)
+            {
+                playerDialoguePanel.SetActive(false);
+                npcDialoguePanel.SetActive(true);
+            }
+            else
+            {
+                playerDialoguePanel.SetActive(true);
+                npcDialoguePanel.SetActive(false);
+            }
+            
             // set the text to the full line, but set the visible characters to 0
-            playerDialogueText.text = line;
-            playerDialogueText.maxVisibleCharacters = 0;
+            currentDialogueText.text = line;
+            currentDialogueText.maxVisibleCharacters = 0;
+            
             // hide items while text is typing
             npcDialogueContinueIcon.SetActive(false);
-            
-            //TODO: hide player options icon
-            //HideChoices();
+            playerDialogueChoicesIcon.SetActive(false);
 
-            canContinueToNextLine = false;
+            _canContinueToNextLine = false;
 
             bool isAddingRichTextTag = false;
 
+            // wait to reset frame input
+            yield return new WaitForSeconds(0);
+            
             // display each letter one at a time
             foreach (char letter in line.ToCharArray())
             {
+                
                 // if the submit button is pressed, finish up displaying the line right away
-                if (UserInput.Instance.SubmitButtonPressedThisFrame) 
+                if (UserInput.Instance.InteractButtonPressedThisFrame) 
                 {
-                    playerDialogueText.maxVisibleCharacters = line.Length;
+                    Debug.Log("Skipping this line.");
+                    currentDialogueText.maxVisibleCharacters = line.Length;
                     break;
                 }
 
@@ -168,16 +225,22 @@ namespace Dialogue
                 // if not rich text, add the next letter and wait a small time
                 else 
                 {
-                    playerDialogueText.maxVisibleCharacters++;
+                    currentDialogueText.maxVisibleCharacters++;
                     yield return new WaitForSeconds(typingSpeed);
                 }
             }
 
             // actions to take after the entire line has finished displaying
             npcDialogueContinueIcon.SetActive(true);
-            DisplayChoices();
+            
+            // Handle possible choices
+            if (currentStory.currentChoices.Count > 0)
+            {
+                ShowChoicePanel();
+                DisplayChoice(0);
+            }
 
-            canContinueToNextLine = true;
+            _canContinueToNextLine = true;
         }
 
         private void HandleTags(List<string> currentTags)
@@ -185,75 +248,63 @@ namespace Dialogue
             // loop through each tag and handle it accordingly
             foreach (string tag in currentTags) 
             {
-                // parse the tag
-                string[] splitTag = tag.Split(':');
-                if (splitTag.Length != 2) 
+                switch (tag.Trim())
                 {
-                    Debug.LogError("Tag could not be appropriately parsed: " + tag);
-                }
-                string tagKey = splitTag[0].Trim();
-                string tagValue = splitTag[1].Trim();
-            
-                //TODO:  handle the tag
-                switch (tagKey) 
-                {
-                    // case SPEAKER_TAG:
-                    //     displayNameText.text = tagValue;
-                    //     break;
-                    // case PORTRAIT_TAG:
-                    //     portraitAnimator.Play(tagValue);
-                    //     break;
-                    // case LAYOUT_TAG:
-                    //     layoutAnimator.Play(tagValue);
-                    //     break;
+                    case MUSHROOM_SPEAKING_TAG:
+                        npcTalking = true;
+                        break;
+                    case PLAYER_STRING_TAG:
+                        npcTalking = false;
+                        break;
                     default:
-                        Debug.LogWarning("Tag came in but is not currently being handled: " + tag);
+                        Debug.LogWarning("Tag could not be appropriately parsed: " + tag);
+                        npcTalking = true;
                         break;
                 }
             }
         }
-
-        private void DisplayChoices() 
+        
+        public void MakeChoice()
         {
-            List<Choice> currentChoices = currentStory.currentChoices;
-
-            int index = 0;
-            // enable and initialize the choices up to the amount of choices for this line of dialogue
-            foreach(Choice choice in currentChoices) 
+            if (_canContinueToNextLine) 
             {
-                // choices[index].gameObject.SetActive(true);
-                // choicesText[index].text = choice.text;
-                Debug.Log("New choice: " + choice.text);
-                index++;
-            }
-            // go through the remaining choices the UI supports and make sure they're hidden
-            // for (int i = index; i < choices.Length; i++) 
-            // {
-            //     choices[i].gameObject.SetActive(false);
-            // }
-
-            StartCoroutine(SelectFirstChoice());
-        }
-
-        private IEnumerator SelectFirstChoice() 
-        {
-            // Event System requires we clear it first, then wait
-            // for at least one frame before we set the current selected object.
-            EventSystem.current.SetSelectedGameObject(null);
-            yield return new WaitForEndOfFrame();
-            // EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
-        }
-
-        public void MakeChoice(int choiceIndex)
-        {
-            if (canContinueToNextLine) 
-            {
-                currentStory.ChooseChoiceIndex(choiceIndex);
-                // NOTE: The below two lines were added to fix a bug after the Youtube video was made
-                // TODO: yea
-                //InputManager.GetInstance().RegisterSubmitPressed(); // this is specific to my InputManager script
+                currentStory.ChooseChoiceIndex(_currentChoiceIndex);
                 ContinueStory();
             }
+        }
+
+        private void ShowChoicePanel()
+        {
+            _currentChoiceIndex = 0;
+            playerDialoguePanel.SetActive(true);
+            playerDialogueChoicesIcon.SetActive(true);
+        }
+        
+        private void DisplayChoice(int index)
+        {
+            playerDialogueText.text = currentStory.currentChoices[index].text;
+        }
+
+        public void NextChoice()
+        {
+            if(currentStory.currentChoices.Count == 0) return;
+
+            _currentChoiceIndex++;
+            if (_currentChoiceIndex >= currentStory.currentChoices.Count)
+                _currentChoiceIndex = 0;
+            
+            DisplayChoice(_currentChoiceIndex);
+        }
+
+        public void PreviousChoice()
+        {
+            if(currentStory.currentChoices.Count == 0) return;
+
+            _currentChoiceIndex--;
+            if (_currentChoiceIndex < 0)
+                _currentChoiceIndex = currentStory.currentChoices.Count-1;
+            
+            DisplayChoice(_currentChoiceIndex);
         }
 
         public Ink.Runtime.Object GetVariableState(string variableName) 
