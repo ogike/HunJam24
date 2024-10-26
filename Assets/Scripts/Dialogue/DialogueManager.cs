@@ -32,9 +32,8 @@ namespace Dialogue
         [SerializeField] private GameObject playerDialoguePanel;
         [SerializeField] private GameObject playerDialogueChoicesIcon;
         [SerializeField] private TextMeshProUGUI playerDialogueText;
-        [SerializeField] private TextMeshProUGUI choicesText;
 
-        
+
         private Story currentStory;
         public bool dialogueIsPlaying { get; private set; }
 
