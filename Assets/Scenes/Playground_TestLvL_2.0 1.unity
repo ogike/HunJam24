@@ -4407,6 +4407,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7786276364697256944, guid: fb6326b7c91ce6a47890bae075c9e787, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786276364697256944, guid: fb6326b7c91ce6a47890bae075c9e787, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786276364697256944, guid: fb6326b7c91ce6a47890bae075c9e787, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.39
+      objectReference: {fileID: 0}
     - target: {fileID: 7909478859605319484, guid: fb6326b7c91ce6a47890bae075c9e787, type: 3}
       propertyPath: m_Name
       value: LeafDudeNPC
@@ -9015,6 +9027,10 @@ PrefabInstance:
     - target: {fileID: 4384192685998752680, guid: 3ee6a7b4d75889143911642ff94b145d, type: 3}
       propertyPath: m_Name
       value: WendigoNPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163255162312191435, guid: 3ee6a7b4d75889143911642ff94b145d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.44
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
