@@ -1,9 +1,9 @@
-->reloop //this is some test infrastructure and should be deleted until the next comment.
-==reloop
-* [first] -> first_loop_ending 
-* [second] ->second_loop_ending
-* [third] -> third_loop_ending
-+ [fourth] ->fourth_loop_ending
+//->reloop //this is some test infrastructure and should be deleted until the next comment.
+//==reloop
+//* [first] -> first_loop_ending 
+//* [second] ->second_loop_ending
+//* [third] -> third_loop_ending
+//+ [fourth] ->fourth_loop_ending
 //this is the next comment
 {-> first_loop_ending | ->second_loop_ending | -> third_loop_ending | ->fourth_loop_ending} 
 
@@ -42,6 +42,6 @@ Hello{.|once again.}#pool
 You must be having some fun with this.#pool
 Or you might be {getting | quite} frustrated {|by now}.#pool
 I'm here to tell you that {this is the last ending | there's no more endings} that we can offer you.#pool
-+[reloop] ->reloop //this is some test infrastructure and should be deleted until the next comment.
-+[finish] //this the next comment.
+//+[reloop] ->reloop //this is some test infrastructure and should be deleted until the next comment.
+//+[finish] //this the next comment.
 ->END
