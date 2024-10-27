@@ -32,6 +32,7 @@ namespace Dialogue
         private Vector3 playerTalkingPos;
         [SerializeField] private float playerGoToTalkingPosSpeed;
         private Vector3 playerTalkingPosVelocity;
+        private DialogueTrigger npcTriggerer;
 
             [Header("Player Dialogue UI")]
         [SerializeField] private GameObject playerDialoguePanel;
@@ -122,7 +123,8 @@ namespace Dialogue
             }
         }
 
-        public void EnterDialogueMode(TextAsset inkJSON, Transform npcDialoguePosition, Vector3 playerTalkingPosition) 
+        public void EnterDialogueMode(TextAsset inkJSON, Transform npcDialoguePosition, 
+            Vector3 playerTalkingPosition, DialogueTrigger triggerer) 
         {
             currentStory = new Story(inkJSON.text);
             dialogueIsPlaying = true;
@@ -131,6 +133,8 @@ namespace Dialogue
             
             dialogueVariables.StartListening(currentStory);
 
+            npcTriggerer = triggerer;
+            
             this.npcDialoguePosition = npcDialoguePosition;
             npcDialoguePanelTransform.position = npcDialoguePosition.position;
             playerTalkingPos = playerTalkingPosition;
@@ -173,6 +177,12 @@ namespace Dialogue
             playerDialogueText.text = "";
             
             CameraFollow.Instance.SetZoomNormal();
+
+            if (npcTriggerer)
+            {
+                npcTriggerer.StopTalking();
+                npcTriggerer = null;
+            }
         }
 
         private void ContinueStory() 

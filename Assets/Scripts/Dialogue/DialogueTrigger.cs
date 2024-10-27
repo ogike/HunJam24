@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Dialogue
 {
@@ -18,11 +19,17 @@ namespace Dialogue
         public Transform playerTalkingPosition;
 
         private bool playerInRange;
+        private bool isTalking;
+
+        public Animator animator;
 
         private void Awake() 
         {
             playerInRange = false;
+            isTalking = false;
             visualCue.SetActive(false);
+
+            animator.SetBool("isTalking", false);
         }
 
         private void Update() 
@@ -32,10 +39,10 @@ namespace Dialogue
                 visualCue.SetActive(true);
                 if (UserInput.Instance.InteractButtonPressedThisFrame)
                 {
-                    Debug.Log(inkJSON.name);
-                    Debug.Log(speechBubblePosition.position);
-                    Debug.Log(DialogueManager.Instance.name);
-                    DialogueManager.Instance.EnterDialogueMode(inkJSON, speechBubblePosition, playerTalkingPosition.position);
+                    DialogueManager.Instance.EnterDialogueMode(inkJSON, speechBubblePosition,
+                        playerTalkingPosition.position, this);
+                    isTalking = true;
+                    animator.SetBool("isTalking", true);
                 }
             }
             else 
@@ -44,11 +51,21 @@ namespace Dialogue
             }
         }
 
+        public void StopTalking()
+        {
+            animator.SetBool("isTalking", false);
+            animator.SetTrigger("Hide");
+            isTalking = false;
+        }
+
         private void OnTriggerEnter2D(Collider2D collider) 
         {
             if (collider.gameObject.tag == "Player")
             {
                 playerInRange = true;
+                
+                if(!isTalking)
+                    animator.SetTrigger("Appear");
             }
         }
 
@@ -57,6 +74,9 @@ namespace Dialogue
             if (collider.gameObject.tag == "Player")
             {
                 playerInRange = false;
+                
+                if(!isTalking)
+                    animator.SetTrigger("Hide");
             }
         }
     }

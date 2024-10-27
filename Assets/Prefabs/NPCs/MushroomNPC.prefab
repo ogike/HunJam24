@@ -49,6 +49,7 @@ MonoBehaviour:
   visualCue: {fileID: 4782853372248590228}
   speechBubblePosition: {fileID: 1565123911386115239}
   playerTalkingPosition: {fileID: 3729156703548018431}
+  animator: {fileID: 1286155136706367171}
 --- !u!61 &1153293259258650277
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -135,6 +136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5207374455538529091}
   - component: {fileID: 3301336261357441618}
+  - component: {fileID: 1286155136706367171}
   m_Layer: 0
   m_Name: MushroomNPC
   m_TagString: Untagged
@@ -213,6 +215,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1286155136706367171
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4172627902671293225}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 245e763860477d44197987dfcddfaadf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4782853372248590228
 GameObject:
   m_ObjectHideFlags: 0
