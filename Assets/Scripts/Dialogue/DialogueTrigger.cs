@@ -15,6 +15,7 @@ namespace Dialogue
         public GameObject visualCue;
 
         public Transform speechBubblePosition;
+        public Transform playerTalkingPosition;
 
         private bool playerInRange;
 
@@ -29,9 +30,12 @@ namespace Dialogue
             if (playerInRange && !DialogueManager.Instance.dialogueIsPlaying) 
             {
                 visualCue.SetActive(true);
-                if (UserInput.Instance.InteractButtonPressedThisFrame) 
+                if (UserInput.Instance.InteractButtonPressedThisFrame)
                 {
-                    DialogueManager.Instance.EnterDialogueMode(inkJSON, speechBubblePosition);
+                    Debug.Log(inkJSON.name);
+                    Debug.Log(speechBubblePosition.position);
+                    Debug.Log(DialogueManager.Instance.name);
+                    DialogueManager.Instance.EnterDialogueMode(inkJSON, speechBubblePosition, playerTalkingPosition.position);
                 }
             }
             else 

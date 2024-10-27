@@ -5,7 +5,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Ink.Runtime;
+using Player;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -27,8 +29,11 @@ namespace Dialogue
         [SerializeField] private TextMeshProUGUI npcDialogueText;
         private Transform npcDialoguePosition; //passed from DialogueTrigger
         private Transform npcDialoguePanelTransform;
+        private Vector3 playerTalkingPos;
+        [SerializeField] private float playerGoToTalkingPosSpeed;
+        private Vector3 playerTalkingPosVelocity;
 
-        [Header("Player Dialogue UI")]
+            [Header("Player Dialogue UI")]
         [SerializeField] private GameObject playerDialoguePanel;
         [SerializeField] private GameObject playerDialogueChoicesIcon;
         [SerializeField] private TextMeshProUGUI playerDialogueText;
@@ -117,7 +122,7 @@ namespace Dialogue
             }
         }
 
-        public void EnterDialogueMode(TextAsset inkJSON, Transform npcDialoguePosition) 
+        public void EnterDialogueMode(TextAsset inkJSON, Transform npcDialoguePosition, Vector3 playerTalkingPosition) 
         {
             currentStory = new Story(inkJSON.text);
             dialogueIsPlaying = true;
@@ -128,10 +133,30 @@ namespace Dialogue
 
             this.npcDialoguePosition = npcDialoguePosition;
             npcDialoguePanelTransform.position = npcDialoguePosition.position;
-            playerDialoguePanelTransform.position = playerDialoguePosition.position;
-            
-            CameraFollow.Instance.SetZoomDialogue();
+            playerTalkingPos = playerTalkingPosition;
 
+            StartCoroutine(StartStory());
+        }
+        
+        /// <summary>
+        /// Player go to position, zoom, starts story once done
+        /// </summary>
+        private IEnumerator StartStory()
+        {
+            CameraFollow.Instance.SetZoomDialogue();
+            
+            Transform playerTrans = PlayerController.Instance.transform;
+            playerTalkingPos.z = playerTrans.position.z; //Dont affect Z axis
+            float curTime = 0;
+
+            while (curTime < playerGoToTalkingPosSpeed + 0.1f)
+            {
+                playerTrans.position = Vector3.SmoothDamp(playerTrans.position, playerTalkingPos, ref playerTalkingPosVelocity, playerGoToTalkingPosSpeed);
+                playerDialoguePanelTransform.position = playerDialoguePosition.position;
+                curTime += Time.deltaTime; 
+                yield return new WaitForSeconds(0);
+            }
+            
             ContinueStory();
         }
 
@@ -252,6 +277,7 @@ namespace Dialogue
 
         private void HandleTags(List<string> currentTags)
         {
+            npcTalking = false; //if there are no tags, assume player is talking
             // loop through each tag and handle it accordingly
             foreach (string tag in currentTags) 
             {
