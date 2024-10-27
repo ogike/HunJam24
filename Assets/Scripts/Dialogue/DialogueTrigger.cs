@@ -29,9 +29,15 @@ namespace Dialogue
             if (playerInRange && !DialogueManager.Instance.dialogueIsPlaying) 
             {
                 visualCue.SetActive(true);
-                if (UserInput.Instance.InteractButtonPressedThisFrame) 
+                if (UserInput.Instance.InteractButtonPressedThisFrame)
                 {
+
+                    Debug.Log(inkJSON.name);
+                    Debug.Log(speechBubblePosition.position);
+                    Debug.Log(DialogueManager.Instance.name);
+
                     SfxManager.Instance.PlayAudio(SfxManager.Instance.interactSound);
+
                     DialogueManager.Instance.EnterDialogueMode(inkJSON, speechBubblePosition);
                 }
             }
