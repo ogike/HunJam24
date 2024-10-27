@@ -32,8 +32,10 @@ namespace Dialogue
         [SerializeField] private GameObject playerDialoguePanel;
         [SerializeField] private GameObject playerDialogueChoicesIcon;
         [SerializeField] private TextMeshProUGUI playerDialogueText;
+        [SerializeField] private Transform playerDialoguePosition;
+        private Transform playerDialoguePanelTransform;
 
-        
+
         private Story currentStory;
         public bool dialogueIsPlaying { get; private set; }
 
@@ -61,6 +63,7 @@ namespace Dialogue
 
             dialogueVariables = new DialogueVariables(loadGlobalsJSON);
             npcDialoguePanelTransform = npcDialoguePanel.transform;
+            playerDialoguePanelTransform = playerDialoguePanel.transform;
         }
 
         private void Start() 
@@ -124,7 +127,10 @@ namespace Dialogue
             dialogueVariables.StartListening(currentStory);
 
             this.npcDialoguePosition = npcDialoguePosition;
-            npcDialoguePanelTransform.position = this.npcDialoguePosition.position;
+            npcDialoguePanelTransform.position = npcDialoguePosition.position;
+            playerDialoguePanelTransform.position = playerDialoguePosition.position;
+            
+            CameraFollow.Instance.SetZoomDialogue();
 
             ContinueStory();
         }
@@ -140,6 +146,8 @@ namespace Dialogue
             npcDialogueText.text = "";
             playerDialoguePanel.SetActive(false);
             playerDialogueText.text = "";
+            
+            CameraFollow.Instance.SetZoomNormal();
         }
 
         private void ContinueStory() 
