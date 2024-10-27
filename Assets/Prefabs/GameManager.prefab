@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8790959792389710277
 MonoBehaviour:
@@ -126,7 +126,8 @@ MonoBehaviour:
   npcDialoguePanel: {fileID: 0}
   npcDialogueContinueIcon: {fileID: 0}
   npcDialogueText: {fileID: 0}
+  playerGoToTalkingPosSpeed: 0.5
   playerDialoguePanel: {fileID: 0}
   playerDialogueChoicesIcon: {fileID: 0}
   playerDialogueText: {fileID: 0}
-  choicesText: {fileID: 0}
+  playerDialoguePosition: {fileID: 0}
