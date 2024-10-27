@@ -32,7 +32,6 @@ public class SfxManager : MonoBehaviour
 
     public void PlayAudio(AudioClip clip, AudioSource source = null)
     {
-        
         (source ?? defaultSource).PlayOneShot(clip);
     }
 }
