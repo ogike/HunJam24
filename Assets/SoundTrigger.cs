@@ -5,7 +5,7 @@ namespace SoundTrigger
 {
     public class SoundTrigger : MonoBehaviour
     {
-        private AudioSource _audioSource;
+        public AudioSource _audioSource;
         private bool playerInRange;
         private bool soundIsPlaying;
 
