@@ -31,6 +31,7 @@ namespace Dialogue
                 visualCue.SetActive(true);
                 if (UserInput.Instance.InteractButtonPressedThisFrame) 
                 {
+                    SfxManager.Instance.PlayAudio(SfxManager.Instance.interactSound);
                     DialogueManager.Instance.EnterDialogueMode(inkJSON, speechBubblePosition);
                 }
             }
