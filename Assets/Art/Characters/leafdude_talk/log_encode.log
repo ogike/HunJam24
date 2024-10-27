@@ -1,0 +1,274 @@
+ffmpeg version 2024-10-24-git-153a6dc8fa-full_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers
+  built with gcc 14.2.0 (Rev1, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-libsnappy --enable-zlib --enable-librist --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-libbluray --enable-libcaca --enable-sdl2 --enable-libaribb24 --enable-libaribcaption --enable-libdav1d --enable-libdavs2 --enable-libopenjpeg --enable-libquirc --enable-libuavs3d --enable-libxevd --enable-libzvbi --enable-libqrencode --enable-librav1e --enable-libsvtav1 --enable-libvvenc --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxavs2 --enable-libxeve --enable-libxvid --enable-libaom --enable-libjxl --enable-libvpx --enable-mediafoundation --enable-libass --enable-frei0r --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-liblensfun --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libshaderc --enable-vulkan --enable-libplacebo --enable-opencl --enable-libcdio --enable-libgme --enable-libmodplug --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libshine --enable-libtheora --enable-libtwolame --enable-libvo-amrwbenc --enable-libcodec2 --enable-libilbc --enable-libgsm --enable-liblc3 --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-ladspa --enable-libbs2b --enable-libflite --enable-libmysofa --enable-librubberband --enable-libsoxr --enable-chromaprint
+  libavutil      59. 45.100 / 59. 45.100
+  libavcodec     61. 22.100 / 61. 22.100
+  libavformat    61.  9.100 / 61.  9.100
+  libavdevice    61.  4.100 / 61.  4.100
+  libavfilter    10.  6.100 / 10.  6.100
+  libswscale      8.  9.100 /  8.  9.100
+  libswresample   5.  4.100 /  5.  4.100
+  libpostproc    58.  4.100 / 58.  4.100
+Splitting the commandline.
+Reading option '-v' ... matched as option 'v' (set logging level) with argument 'debug'.
+Reading option '-nostdin' ... matched as option 'stdin' (enable or disable interaction on standard input) with argument 0.
+Reading option '-progress' ... matched as option 'progress' (write program-readable progress information) with argument 'C:/Users/Taki/AppData/Local/Temp/KritaFFmpegProgress.PRFAsB'.
+Reading option '-r' ... matched as option 'r' (override input framerate/convert to given output framerate (Hz value, fraction or abbreviation)) with argument '10'.
+Reading option '-start_number' ... matched as AVOption 'start_number' with argument '35'.
+Reading option '-i' ... matched as input url with argument 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk%04d.png'.
+Reading option '-crf' ... matched as AVOption 'crf' with argument '23'.
+Reading option '-preset' ... matched as AVOption 'preset' with argument 'medium'.
+Reading option '-profile:v' ... matched as option 'profile' (set profile) with argument 'baseline'.
+Reading option '-pix_fmt' ... matched as option 'pix_fmt' (set pixel format) with argument 'yuv420p'.
+Reading option '-y' ... matched as option 'y' (overwrite output files) with argument '1'.
+Reading option 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk.mp4' ... matched as output url.
+Finished splitting the commandline.
+Parsing a group of options: global .
+Applying option v (set logging level) with argument debug.
+Applying option nostdin (enable or disable interaction on standard input) with argument 0.
+Applying option progress (write program-readable progress information) with argument C:/Users/Taki/AppData/Local/Temp/KritaFFmpegProgress.PRFAsB.
+[file @ 00000190d8097a80] Setting default whitelist 'file,crypto,data'
+Applying option y (overwrite output files) with argument 1.
+Successfully parsed a group of options.
+Parsing a group of options: input url C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk%04d.png.
+Applying option r (override input framerate/convert to given output framerate (Hz value, fraction or abbreviation)) with argument 10.
+Successfully parsed a group of options.
+Opening an input file: C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk%04d.png.
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0035.png' for reading
+[file @ 00000190d80dea00] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d80e6b80] Statistics: 46215 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0036.png' for reading
+[file @ 00000190d80f2340] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46215 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0037.png' for reading
+[file @ 00000190d80f2400] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46215 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0038.png' for reading
+[file @ 00000190d811af80] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46763 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0039.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46763 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0040.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46763 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0041.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46547 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0042.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46547 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0043.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46547 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0044.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46613 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0045.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46613 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0046.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46613 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0047.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 45247 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0048.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 45247 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0049.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 45230 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0050.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 45230 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0051.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 45199 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0052.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 45607 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0053.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 45607 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0054.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 45683 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0055.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 45683 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0056.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46626 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0057.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46626 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0058.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46679 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0059.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46679 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0060.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 47128 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0061.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 47128 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0062.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 47128 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0063.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46185 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0064.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46185 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0065.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46185 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0066.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46653 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0067.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46653 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0068.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46653 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0069.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46459 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0070.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46459 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0071.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46459 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0072.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46564 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0073.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46564 bytes read, 0 seeks
+[image2 @ 00000190d8098980] Opening 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk0074.png' for reading
+[file @ 00000190d8126800] Setting default whitelist 'file,crypto,data'
+[AVIOContext @ 00000190d8104380] Statistics: 46564 bytes read, 0 seeks
+Input #0, image2, from 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk%04d.png':
+  Duration: 00:00:01.60, start: 0.000000, bitrate: N/A
+  Stream #0:0, 40, 1/25: Video: png, 1 reference frame, rgba(pc, gbr/unknown/unknown), 512x512 [SAR 3779:3779 DAR 1:1], 0/1, 25 fps, 25 tbr, 25 tbn
+Successfully opened the file.
+Parsing a group of options: output url C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk.mp4.
+Applying option profile:v (set profile) with argument baseline.
+Applying option pix_fmt (set pixel format) with argument yuv420p.
+Successfully parsed a group of options.
+Opening an output file: C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk.mp4.
+[out#0/mp4 @ 00000190d80dba40] No explicit maps, mapping streams automatically...
+[vost#0:0/libx264 @ 00000190d80e5ac0] Created video stream from input stream 0:0
+detected 4 logical cores
+[file @ 00000190d80e2d80] Setting default whitelist 'file,crypto,data'
+Successfully opened the file.
+Stream mapping:
+  Stream #0:0 -> #0:0 (png (native) -> h264 (libx264))
+[vost#0:0/libx264 @ 00000190d80e5ac0] Starting thread...
+[vf#0:0 @ 00000190d80e6740] Starting thread...
+[vist#0:0/png @ 00000190d80db880] [dec:png @ 00000190d80dc440] Starting thread...
+[in#0/image2 @ 00000190d8098680] Starting thread...
+[graph -1 input from stream 0:0 @ 00000190d85e16c0] w:512 h:512 pixfmt:rgba tb:1/10 fr:10/1 sar:3779/3779 csp:gbr range:pc
+[format @ 00000190d85e1f80] Setting 'pix_fmts' to value 'yuv420p'
+[format @ 00000190d85e1f80] Setting 'color_ranges' to value 'tv|pc'
+[auto_scale_0 @ 00000190d85e2400] w:iw h:ih flags:'' interl:0
+[format @ 00000190d85e1f80] auto-inserting filter 'auto_scale_0' between the filter 'Parsed_null_0' and the filter 'format'
+[AVFilterGraph @ 00000190d877b140] query_formats: 4 queried, 6 merged, 3 already done, 0 delayed
+[auto_scale_0 @ 00000190d85e2400] w:512 h:512 fmt:rgba csp:gbr range:pc sar:3779/3779 -> w:512 h:512 fmt:yuv420p csp:unknown range:tv sar:1/1 flags:0x00000004
+[auto_scale_0 @ 00000190d85e2400] [framesync @ 00000190d85e2568] Selected 1/10 time base
+[auto_scale_0 @ 00000190d85e2400] [framesync @ 00000190d85e2568] Sync level 1
+[libx264 @ 00000190d80e6380] using mv_range_thread = 40
+[libx264 @ 00000190d80e6380] using SAR=1/1
+[libx264 @ 00000190d80e6380] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 00000190d80e6380] profile Constrained Baseline, level 2.2, 4:2:0, 8-bit
+[libx264 @ 00000190d80e6380] 264 - core 164 r3194 1243d9f - H.264/MPEG-4 AVC codec - Copyleft 2003-2024 - http://www.videolan.org/x264.html - options: cabac=0 ref=3 deblock=1:0:0 analyse=0x1:0x111 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=0 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=0 weightp=0 keyint=250 keyint_min=10 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to 'C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk.mp4':
+  Metadata:
+    encoder         : Lavf61.9.100
+  Stream #0:0, 0, 1/10240: Video: h264, 1 reference frame (avc1 / 0x31637661), yuv420p(tv, progressive), 512x512 [SAR 1:1 DAR 1:1], 0/1, q=2-31, 10 fps, 10240 tbn
+    Metadata:
+      encoder         : Lavc61.22.100 libx264
+    Side data:
+      ICC Profile
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+[out#0/mp4 @ 00000190d80dba40] Starting thread...
+[in#0/image2 @ 00000190d8098680] EOF while reading input
+[in#0/image2 @ 00000190d8098680] Terminating thread with return code 0 (success)
+[vist#0:0/png @ 00000190d80db880] [dec:png @ 00000190d80dc440] Decoder thread received EOF packet
+[vist#0:0/png @ 00000190d80db880] [dec:png @ 00000190d80dc440] Decoder returned EOF, finishing
+[vist#0:0/png @ 00000190d80db880] [dec:png @ 00000190d80dc440] Terminating thread with return code 0 (success)
+[auto_scale_0 @ 00000190d85e2400] [framesync @ 00000190d85e2568] Sync level 0
+[out_#0:0 @ 00000190d85e1d40] EOF on sink link out_#0:0:default.
+[vf#0:0 @ 00000190d80e6740] Filtergraph returned EOF, finishing
+[vf#0:0 @ 00000190d80e6740] All consumers returned EOF
+[vf#0:0 @ 00000190d80e6740] Terminating thread with return code 0 (success)
+[vost#0:0/libx264 @ 00000190d80e5ac0] [enc:libx264 @ 00000190d8673980] Encoder thread received EOF
+[libx264 @ 00000190d80e6380] frame=   0 QP=10.38 NAL=3 Slice:I Poc:0   I:1024 P:0    SKIP:0    size=4942 bytes
+[libx264 @ 00000190d80e6380] frame=   1 QP=13.20 NAL=2 Slice:P Poc:2   I:4    P:98   SKIP:922  size=221 bytes
+[libx264 @ 00000190d80e6380] frame=   2 QP=11.24 NAL=2 Slice:P Poc:4   I:2    P:15   SKIP:1007 size=76 bytes
+[libx264 @ 00000190d80e6380] frame=   3 QP=11.59 NAL=2 Slice:P Poc:6   I:11   P:38   SKIP:975  size=780 bytes
+[libx264 @ 00000190d80e6380] frame=   4 QP=11.24 NAL=2 Slice:P Poc:8   I:1    P:10   SKIP:1013 size=51 bytes
+[libx264 @ 00000190d80e6380] frame=   5 QP=11.24 NAL=2 Slice:P Poc:10  I:1    P:5    SKIP:1018 size=38 bytes
+frame=    6 fps=0.0 q=25.0 size=       0KiB time=00:00:00.60 bitrate=   0.6kbits/s speed=1.15x    [libx264 @ 00000190d80e6380] frame=   6 QP=11.32 NAL=2 Slice:P Poc:12  I:14   P:24   SKIP:986  size=734 bytes
+[libx264 @ 00000190d80e6380] frame=   7 QP=12.20 NAL=2 Slice:P Poc:14  I:1    P:8    SKIP:1015 size=54 bytes
+[libx264 @ 00000190d80e6380] frame=   8 QP=11.46 NAL=2 Slice:P Poc:16  I:1    P:6    SKIP:1017 size=42 bytes
+[libx264 @ 00000190d80e6380] frame=   9 QP=17.22 NAL=2 Slice:P Poc:18  I:6    P:45   SKIP:973  size=679 bytes
+[libx264 @ 00000190d80e6380] frame=  10 QP=11.53 NAL=2 Slice:P Poc:20  I:1    P:6    SKIP:1017 size=42 bytes
+[libx264 @ 00000190d80e6380] frame=  11 QP=11.24 NAL=2 Slice:P Poc:22  I:1    P:5    SKIP:1018 size=38 bytes
+[libx264 @ 00000190d80e6380] frame=  12 QP=15.05 NAL=2 Slice:P Poc:24  I:20   P:26   SKIP:978  size=724 bytes
+[libx264 @ 00000190d80e6380] frame=  13 QP=11.79 NAL=2 Slice:P Poc:26  I:2    P:9    SKIP:1013 size=61 bytes
+[libx264 @ 00000190d80e6380] frame=  14 QP=11.78 NAL=2 Slice:P Poc:28  I:1    P:11   SKIP:1012 size=166 bytes
+[libx264 @ 00000190d80e6380] frame=  15 QP=11.24 NAL=2 Slice:P Poc:30  I:1    P:5    SKIP:1018 size=38 bytes
+[libx264 @ 00000190d80e6380] frame=  16 QP=11.43 NAL=2 Slice:P Poc:32  I:3    P:10   SKIP:1011 size=173 bytes
+[libx264 @ 00000190d80e6380] frame=  17 QP=16.91 NAL=2 Slice:P Poc:34  I:8    P:43   SKIP:973  size=708 bytes
+[libx264 @ 00000190d80e6380] frame=  18 QP=11.24 NAL=2 Slice:P Poc:36  I:1    P:5    SKIP:1018 size=38 bytes
+[libx264 @ 00000190d80e6380] frame=  19 QP=11.84 NAL=2 Slice:P Poc:38  I:1    P:9    SKIP:1014 size=156 bytes
+[libx264 @ 00000190d80e6380] frame=  20 QP=11.57 NAL=2 Slice:P Poc:40  I:1    P:7    SKIP:1016 size=45 bytes
+[libx264 @ 00000190d80e6380] frame=  21 QP=16.16 NAL=2 Slice:P Poc:42  I:8    P:40   SKIP:976  size=812 bytes
+[libx264 @ 00000190d80e6380] frame=  22 QP=11.71 NAL=2 Slice:P Poc:44  I:1    P:7    SKIP:1016 size=42 bytes
+[libx264 @ 00000190d80e6380] frame=  23 QP=16.68 NAL=2 Slice:P Poc:46  I:2    P:10   SKIP:1012 size=164 bytes
+[libx264 @ 00000190d80e6380] frame=  24 QP=9.45 NAL=2 Slice:P Poc:48  I:2    P:4    SKIP:1018 size=38 bytes
+[libx264 @ 00000190d80e6380] frame=  25 QP=14.89 NAL=2 Slice:P Poc:50  I:7    P:55   SKIP:962  size=818 bytes
+[libx264 @ 00000190d80e6380] frame=  26 QP=15.69 NAL=2 Slice:P Poc:52  I:1    P:9    SKIP:1014 size=50 bytes
+[libx264 @ 00000190d80e6380] frame=  27 QP=12.66 NAL=2 Slice:P Poc:54  I:1    P:4    SKIP:1019 size=33 bytes
+[libx264 @ 00000190d80e6380] frame=  28 QP=16.46 NAL=2 Slice:P Poc:56  I:8    P:42   SKIP:974  size=734 bytes
+[libx264 @ 00000190d80e6380] frame=  29 QP=11.88 NAL=2 Slice:P Poc:58  I:2    P:6    SKIP:1016 size=46 bytes
+[libx264 @ 00000190d80e6380] frame=  30 QP=12.66 NAL=2 Slice:P Poc:60  I:1    P:3    SKIP:1020 size=29 bytes
+[libx264 @ 00000190d80e6380] frame=  31 QP=11.98 NAL=2 Slice:P Poc:62  I:7    P:40   SKIP:977  size=729 bytes
+[libx264 @ 00000190d80e6380] frame=  32 QP=18.60 NAL=2 Slice:P Poc:64  I:1    P:6    SKIP:1017 size=42 bytes
+[libx264 @ 00000190d80e6380] frame=  33 QP=12.66 NAL=2 Slice:P Poc:66  I:1    P:3    SKIP:1020 size=29 bytes
+[libx264 @ 00000190d80e6380] frame=  34 QP=16.06 NAL=2 Slice:P Poc:68  I:8    P:40   SKIP:976  size=658 bytes
+[libx264 @ 00000190d80e6380] frame=  35 QP=16.99 NAL=2 Slice:P Poc:70  I:1    P:4    SKIP:1019 size=35 bytes
+[libx264 @ 00000190d80e6380] frame=  36 QP=12.77 NAL=2 Slice:P Poc:72  I:1    P:2    SKIP:1021 size=25 bytes
+[libx264 @ 00000190d80e6380] frame=  37 QP=16.39 NAL=2 Slice:P Poc:74  I:7    P:36   SKIP:981  size=628 bytes
+[libx264 @ 00000190d80e6380] frame=  38 QP=12.90 NAL=2 Slice:P Poc:76  I:1    P:2    SKIP:1021 size=25 bytes
+[libx264 @ 00000190d80e6380] frame=  39 QP=13.00 NAL=2 Slice:P Poc:78  I:0    P:0    SKIP:1024 size=11 bytes
+[vost#0:0/libx264 @ 00000190d80e5ac0] Terminating thread with return code 0 (success)
+[out#0/mp4 @ 00000190d80dba40] All streams finished
+[out#0/mp4 @ 00000190d80dba40] Terminating thread with return code 0 (success)
+[AVIOContext @ 00000190d8104340] Statistics: 16998 bytes written, 2 seeks, 4 writeouts
+[out#0/mp4 @ 00000190d80dba40] Output file #0 (C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk.mp4):
+[out#0/mp4 @ 00000190d80dba40]   Output stream #0:0 (video): 40 frames encoded; 40 packets muxed (15382 bytes); 
+[out#0/mp4 @ 00000190d80dba40]   Total: 40 packets (15382 bytes) muxed
+[out#0/mp4 @ 00000190d80dba40] video:15KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 10.479782%
+frame=   40 fps=0.0 q=-1.0 Lsize=      17KiB time=00:00:04.00 bitrate=  34.0kbits/s speed=6.07x    
+[AVIOContext @ 00000190d8098540] Statistics: 383 bytes written, 0 seeks, 2 writeouts
+[libx264 @ 00000190d80e6380] frame I:1     Avg QP:10.38  size:  4942
+[libx264 @ 00000190d80e6380] frame P:39    Avg QP:13.23  size:   252
+[libx264 @ 00000190d80e6380] mb I  I16..4: 85.4%  0.0% 14.6%
+[libx264 @ 00000190d80e6380] mb P  I16..4:  0.2%  0.0%  0.2%  P16..4:  1.2%  0.3%  0.2%  0.0%  0.0%    skip:97.9%
+[libx264 @ 00000190d80e6380] coded y,uvDC,uvAC intra: 16.1% 29.7% 26.1% inter: 0.4% 0.8% 0.2%
+[libx264 @ 00000190d80e6380] i16 v,h,dc,p: 89%  8%  3%  0%
+[libx264 @ 00000190d80e6380] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 25% 13% 30%  4%  7%  6%  6%  5%  4%
+[libx264 @ 00000190d80e6380] i8c dc,h,v,p: 73%  8% 14%  5%
+[libx264 @ 00000190d80e6380] ref P L0: 94.2%  2.7%  3.1%
+[libx264 @ 00000190d80e6380] kb/s:29.51
+[in#0/image2 @ 00000190d8098680] Input file #0 (C:/Users/Taki/Desktop/hunjam2024/assets/leafdude/leafdude_talk/leafdude_talk%04d.png):
+[in#0/image2 @ 00000190d8098680]   Input stream #0:0 (video): 40 packets read (1852724 bytes); 40 frames decoded; 0 decode errors; 
+[in#0/image2 @ 00000190d8098680]   Total: 40 packets (1852724 bytes) demuxed
