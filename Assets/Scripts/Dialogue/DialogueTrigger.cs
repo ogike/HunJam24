@@ -43,6 +43,7 @@ namespace Dialogue
                         playerTalkingPosition.position, this);
                     isTalking = true;
                     animator.SetBool("isTalking", true);
+                    SfxManager.Instance.PlayAudio(SfxManager.Instance.interactSound);
                 }
             }
             else 
