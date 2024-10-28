@@ -18,7 +18,7 @@ namespace Dialogue
         public static DialogueManager Instance { get; private set; }
 
         [Header("Params")]
-        [SerializeField] private float typingSpeed = 0.04f;
+        public float typingSpeed = 0.04f;
 
         [Header("Load Globals JSON")]
         [SerializeField] private TextAsset loadGlobalsJSON;
