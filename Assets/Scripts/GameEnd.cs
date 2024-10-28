@@ -173,6 +173,7 @@ public class GameEnd : MonoBehaviour
         public void ExitDialogueMode()
         {
             endPanel.SetActive(false);
+            dialogueIsPlaying = false;
             playerTrans.position = playerStartPos;
         }
 }
