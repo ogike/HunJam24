@@ -130,8 +130,8 @@ namespace Dialogue
             dialogueIsPlaying = true;
             // npcDialoguePanel.SetActive(true);
             // playerDialoguePanel.SetActive(true);
-            
-            dialogueVariables.StartListening(currentStory);
+
+            StartListeningToStoryVariable(currentStory);
 
             npcTriggerer = triggerer;
             
@@ -168,7 +168,7 @@ namespace Dialogue
         {
             yield return new WaitForSeconds(0.2f);
 
-            dialogueVariables.StopListening(currentStory);
+            StopListeningToStoryVariable(currentStory);
 
             dialogueIsPlaying = false;
             npcDialoguePanel.SetActive(false);
@@ -204,6 +204,17 @@ namespace Dialogue
             {
                 StartCoroutine(ExitDialogueMode());
             }
+        }
+
+        //Needed for the GameEnd script to access global variable states that we manage
+        public void StartListeningToStoryVariable(Story story)
+        {
+            dialogueVariables.StartListening(story);
+        }
+        
+        public void StopListeningToStoryVariable(Story story)
+        {
+            dialogueVariables.StopListening(story);
         }
 
         //TODO: seperate this into the two bubbles

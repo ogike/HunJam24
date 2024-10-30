@@ -1,1 +1,1 @@
-﻿VAR times_interacted_with = "0"
+VAR visit_count = "0"

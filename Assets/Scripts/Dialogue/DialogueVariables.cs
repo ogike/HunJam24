@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Ink;
 using UnityEngine;
 using Ink.Runtime;
 
@@ -14,11 +15,12 @@ public class DialogueVariables
         // create the story
         globalVariablesStory = new Story(loadGlobalsJSON.text);
         // if we have saved data, load it
-        if (PlayerPrefs.HasKey(saveVariablesKey))
-        {
-            string jsonState = PlayerPrefs.GetString(saveVariablesKey);
-            globalVariablesStory.state.LoadJson(jsonState);
-        }
+        // NOTE: commented out loading saved data for debug purposes.
+        // if (PlayerPrefs.HasKey(saveVariablesKey))
+        // {
+        //     string jsonState = PlayerPrefs.GetString(saveVariablesKey);
+        //     globalVariablesStory.state.LoadJson(jsonState);
+        // }
 
         // initialize the dictionary
         variables = new Dictionary<string, Ink.Runtime.Object>();
@@ -56,6 +58,7 @@ public class DialogueVariables
 
     private void VariableChanged(string name, Ink.Runtime.Object value) 
     {
+        Debug.Log("New variable: " + name + ":" + value);
         // only maintain variables that were initialized from the globals ink file
         if (variables.ContainsKey(name)) 
         {
