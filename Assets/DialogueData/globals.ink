@@ -1,1 +1,1 @@
-VAR visit_count = "0"
+VAR visit_count = 0

@@ -1,3 +1,4 @@
+INCLUDE ./globals.ink
 // intro monologue, spoken _to_ the mushroom
 
 //->reloop //this is some test infrastructure and should be deleted until the next comment.
@@ -13,13 +14,13 @@
     * What am I doing here?
         I should ask this question. #mushroom
         It's you who came into our woods. #mushroom
-    * {intro.leave} Why am I here again?
+    * {visit_count > 0} Why am I here again?
         Again? I've never seen this pale face of yours. #mushroom
-    * {intro.leave > 1} Is there no escape from this?
+    * {visit_count > 1} Is there no escape from this?
         Escape? #mushroom
         Good. #mushroom
         I don't like your face. #mushroom
-    * {intro.leave > 2} Am I stuck here forever?
+    * {visit_count > 2} Am I stuck here forever?
         Forever? #mushroom
         You just got here. #mushroom
         And I don't like your pale face. #mushroom
