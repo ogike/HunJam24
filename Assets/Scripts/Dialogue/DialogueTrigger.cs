@@ -17,6 +17,7 @@ namespace Dialogue
 
         public Transform speechBubblePosition;
         public Transform playerTalkingPosition;
+        public Transform cameraPosition; 
 
         private bool playerInRange;
         private bool isTalking;
@@ -41,6 +42,9 @@ namespace Dialogue
                 {
                     DialogueManager.Instance.EnterDialogueMode(inkJSON, speechBubblePosition,
                         playerTalkingPosition.position, this);
+                    
+                    CameraFollow.Instance.SetDialoguePosition(cameraPosition.position);
+                    
                     isTalking = true;
                     animator.SetBool("isTalking", true);
                     SfxManager.Instance.PlayAudio(SfxManager.Instance.interactSound);

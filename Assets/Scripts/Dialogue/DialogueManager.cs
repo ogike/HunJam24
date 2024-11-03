@@ -45,7 +45,7 @@ namespace Dialogue
         private Story currentStory;
         public bool dialogueIsPlaying { get; private set; }
 
-        private bool _canContinueToNextLine = false;
+        private bool _canContinueToNextLine;
         private int _currentChoiceIndex = 0;
         private bool npcTalking;
         private bool _switchedChoiceAlready;
@@ -75,6 +75,7 @@ namespace Dialogue
         private void Start() 
         {
             dialogueIsPlaying = false;
+            _canContinueToNextLine = false;
             npcDialoguePanel.SetActive(false);
             playerDialoguePanel.SetActive(false);
             npcDialogueContinueIcon.SetActive(false);
@@ -128,6 +129,7 @@ namespace Dialogue
         {
             currentStory = new Story(inkJSON.text);
             dialogueIsPlaying = true;
+            _canContinueToNextLine = false;
             // npcDialoguePanel.SetActive(true);
             // playerDialoguePanel.SetActive(true);
 
@@ -337,6 +339,7 @@ namespace Dialogue
         private void DisplayChoice(int index)
         {
             playerDialogueText.text = currentStory.currentChoices[index].text;
+            playerDialogueText.maxVisibleCharacters = 99;
         }
 
         public void NextChoice()

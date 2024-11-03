@@ -18,9 +18,8 @@ public class CameraFollow : MonoBehaviour
     public float zoomedInFov;
     public float zoomSpeed;
 
-    public Transform dialogueZoomedPosition;
-    private Vector3 _offsetToPlayerPosDialogue;
-    
+    private Vector3 dialogueZoomedPosition;
+
     private bool _zoomedIn;
     private float _zoomVelocity;
     
@@ -50,8 +49,7 @@ public class CameraFollow : MonoBehaviour
         _playerTrans = PlayerController.Instance.transform;
         _myTrans = transform;
         _offsetToPlayerPos = _myTrans.position - _playerTrans.position;
-        _offsetToPlayerPosDialogue = dialogueZoomedPosition.position - _playerTrans.position;
-        
+
         SetZoomNormal();
     }
 
@@ -61,14 +59,24 @@ public class CameraFollow : MonoBehaviour
         UpdateZoom();
     }
 
+    public void SetDialoguePosition(Vector3 position)
+    {
+        dialogueZoomedPosition = position;
+    }
+
     private void UpdatePosition()
     {
         Vector3 myPos = _myTrans.position;
         Vector3 playerPos = _playerTrans.position;
-        Vector3 offset = _zoomedIn ? _offsetToPlayerPosDialogue : _offsetToPlayerPos;
         
-        targetPos = playerPos + offset;
-
+        if (_zoomedIn)
+        {
+            targetPos = dialogueZoomedPosition;
+        }
+        else
+        {
+            targetPos = playerPos + _offsetToPlayerPos;
+        }
         _myTrans.position = Vector3.SmoothDamp(myPos, targetPos, ref _basePosVelocity, followSpeed);
     }
 
